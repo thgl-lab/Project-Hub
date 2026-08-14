@@ -47,6 +47,15 @@
     padding:20px 24px;
   }
 
+  .header-top{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px 24px;
+    margin-bottom:22px;
+  }
+
   .brand{
     display:inline-block;
     font-family:'Pretendard', sans-serif;
@@ -54,7 +63,31 @@
     font-size:19px;
     text-decoration:none;
     letter-spacing:-.4px;
-    margin-bottom:22px;
+  }
+
+  .site-nav{
+    display:flex;
+    gap:22px;
+    font-size:14px;
+    font-weight:600;
+  }
+
+  .site-nav a{
+    text-decoration:none;
+    color:var(--gray-700);
+    border-bottom:1px solid transparent;
+    padding-bottom:2px;
+    transition:color .15s ease, border-color .15s ease;
+  }
+
+  .site-nav a:hover{
+    color:var(--coral);
+    border-color:var(--coral);
+  }
+
+  .site-nav a[aria-current="page"]{
+    color:var(--gray-900);
+    border-color:var(--coral);
   }
 
   .profile{
@@ -224,7 +257,14 @@
 
 <header class="site-header">
   <div class="header-inner">
-    <a class="brand" href="index.html">HEEOS</a>
+    <div class="header-top">
+      <a class="brand" href="index.html">HEEOS</a>
+      <nav class="site-nav" aria-label="사이트 내비게이션">
+        <a href="list.html" aria-current="page">Projects</a>
+        <a href="about.html">About</a>
+        <a href="mailto:20231819@sungshin.ac.kr">Contact</a>
+      </nav>
+    </div>
     <div class="profile">
       <div>
         <h1 class="name">김소희</h1>
