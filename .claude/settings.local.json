@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:codepen.io)",
+      "WebSearch",
+      "WebFetch(domain:r.jina.ai)",
+      "PowerShell(Start-Process \"C:\\\\Users\\\\223\\\\Desktop\\\\3일차\\\\index.html\")",
+      "WebFetch(domain:tympanus.net)",
+      "PowerShell(Start-Process \"C:\\\\Users\\\\223\\\\Desktop\\\\3일차\\\\index.html\"; Start-Sleep -Milliseconds 400; Start-Process \"C:\\\\Users\\\\223\\\\Desktop\\\\3일차\\\\list.html\")"
+    ]
+  }
+}

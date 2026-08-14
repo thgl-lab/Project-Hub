@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HEEOS</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Crect width='16' height='16' fill='%232C2C2C'/%3E%3Crect x='2' y='2' width='12' height='9' fill='%23F5F5F5'/%3E%3Crect x='2' y='2' width='12' height='2' fill='%23FF8B6A'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+  :root{
+    --gray-50:#F5F5F5;
+    --gray-200:#E4E4E4;
+    --gray-700:#5b5b5b;
+    --gray-900:#2C2C2C;
+    --coral:#FF8B6A;
+    --coral-light:#FFAB91;
+  }
+
+  *{ box-sizing:border-box; }
+
+  html,body{
+    margin:0;
+    height:100%;
+    background:var(--gray-900);
+  }
+
+  body{
+    font-family:'Pretendard', -apple-system, 'Malgun Gothic', sans-serif;
+  }
+
+  .intro{
+    min-height:100vh;
+    min-height:100dvh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:clamp(28px, 6vw, 48px);
+    padding:40px 24px;
+    text-align:center;
+    transition:opacity .38s ease, transform .38s ease;
+  }
+
+  .intro.leaving{
+    opacity:0;
+    transform:scale(.97);
+  }
+
+  /* ---------- animated verbs ---------- */
+  .verbs-stage{
+    margin:0;
+    display:flex;
+    flex-direction:column;
+    gap:clamp(2px, 1vw, 10px);
+  }
+
+  .verb{
+    display:flex;
+    justify-content:center;
+    font-weight:800;
+    font-size:clamp(38px, 10vw, 78px);
+    letter-spacing:1px;
+    line-height:1.15;
+  }
+
+  .verb .char{
+    display:inline-block;
+    white-space:pre;
+  }
+
+  .verb--float .char{
+    color:var(--gray-50);
+    animation:vFloat 3s ease-in-out infinite;
+    animation-delay:calc(var(--i) * .12s);
+  }
+  @keyframes vFloat{
+    0%, 100%{ transform:translateY(0); }
+    50%{ transform:translateY(-.16em); }
+  }
+
+  .verb--jump .char{
+    color:var(--coral-light);
+    animation:vJump 1s ease-in-out infinite;
+    animation-delay:calc(var(--i) * .06s);
+  }
+  @keyframes vJump{
+    0%, 100%{ transform:translateY(0); }
+    30%{ transform:translateY(-.28em); }
+    50%{ transform:translateY(0); }
+  }
+
+  .enter-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-family:'Pretendard', -apple-system, sans-serif;
+    font-weight:600;
+    font-size:16px;
+    letter-spacing:.2px;
+    color:var(--gray-900);
+    background:var(--coral);
+    border:none;
+    border-radius:999px;
+    padding:16px 34px 16px 38px;
+    cursor:pointer;
+    box-shadow:0 10px 24px rgba(255,139,106,.32);
+    opacity:0;
+    transition:transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s ease, background-color .2s ease;
+    animation:fadeIn .6s ease .3s forwards;
+  }
+
+  @keyframes fadeIn{
+    from{ opacity:0; transform:translateY(-8px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+
+  .enter-btn .arrow{
+    display:inline-block;
+    transition:transform .3s cubic-bezier(.22,1,.36,1);
+  }
+
+  .enter-btn.ready{
+    animation-name:softBounce;
+    animation-duration:2.4s;
+    animation-iteration-count:infinite;
+    animation-timing-function:ease-in-out;
+  }
+
+  .enter-btn:hover{
+    background:var(--coral-light);
+    transform:translateY(-3px);
+    box-shadow:0 14px 30px rgba(255,139,106,.42);
+  }
+
+  .enter-btn:hover .arrow{
+    transform:translateX(4px);
+  }
+
+  .enter-btn:active{
+    transform:translateY(0) scale(.97);
+    box-shadow:0 6px 16px rgba(255,139,106,.3);
+  }
+
+  .enter-btn:hover, .enter-btn:active, .enter-btn:focus-visible{
+    animation-play-state:paused;
+  }
+
+  .enter-btn:focus-visible{
+    outline:2px solid var(--coral-light);
+    outline-offset:4px;
+  }
+
+  @keyframes softBounce{
+    0%, 100%{ transform:translateY(0); }
+    50%{ transform:translateY(-5px); }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .enter-btn{ animation:none !important; opacity:1 !important; transform:none !important; }
+    .verb .char{ animation:none !important; }
+  }
+
+  @media (max-width:380px){
+    .intro{ padding:32px 18px; }
+  }
+</style>
+</head>
+<body>
+
+<main class="intro" id="intro">
+  <h1 class="verbs-stage">
+    <span class="verb verb--float">HELLO</span>
+    <span class="verb verb--jump">SOHEE</span>
+  </h1>
+
+  <button id="enterBtn" class="enter-btn" type="button" autofocus>
+    ENTER
+    <span class="arrow" aria-hidden="true">→</span>
+  </button>
+</main>
+
+<script>
+(function(){
+  // split each .verb's text into per-character spans with a --i custom
+  // property, so each character's animation-delay can stagger off it.
+  document.querySelectorAll('.verb').forEach(function(el){
+    var text = el.textContent;
+    el.textContent = '';
+    Array.prototype.forEach.call(text, function(ch, i){
+      var span = document.createElement('span');
+      span.className = 'char';
+      span.style.setProperty('--i', i);
+      span.textContent = ch;
+      el.appendChild(span);
+    });
+  });
+
+  var btn = document.getElementById('enterBtn');
+
+  btn.addEventListener('animationend', function handler(e){
+    if (e.animationName === 'fadeIn'){
+      btn.classList.add('ready');
+      btn.removeEventListener('animationend', handler);
+    }
+  });
+
+  // safety net: reduced-motion / animationend not firing for any reason
+  setTimeout(function(){ btn.classList.add('ready'); }, 1500);
+
+  btn.addEventListener('click', function(){
+    var intro = document.getElementById('intro');
+    intro.classList.add('leaving');
+    setTimeout(function(){
+      window.location.href = 'list.html';
+    }, 380);
+  });
+})();
+</script>
+</body>
+</html>
