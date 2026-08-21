@@ -8,11 +8,12 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
 <style>
   :root{
-    --gray-50:#F5F5F5;
-    --gray-100:#EDEDED;
-    --gray-200:#DCDCDC;
-    --gray-700:#5b5b5b;
-    --gray-900:#2C2C2C;
+    --bg:#0C0C0C;
+    --surface:#18181A;
+    --surface-2:#212226;
+    --surface-border:#2E3033;
+    --text:#D7E2EA;
+    --text-dim:#8D96A1;
     --coral:#FF8B6A;
     --coral-light:#FFAB91;
     --maxw:1040px;
@@ -20,19 +21,19 @@
 
   *{ box-sizing:border-box; }
 
-  html,body{ margin:0; background:var(--gray-50); }
+  html,body{ margin:0; background:var(--bg); }
 
   body{
     font-family:'Pretendard', -apple-system, 'Malgun Gothic', sans-serif;
-    color:var(--gray-900);
+    color:var(--text);
   }
 
   a{ color:inherit; }
 
   /* ---------- header ---------- */
   .site-header{
-    border-bottom:1px solid var(--gray-900);
-    background:var(--gray-50);
+    border-bottom:1px solid var(--surface-border);
+    background:var(--bg);
     animation:fadeInUp .5s ease both;
   }
 
@@ -74,7 +75,7 @@
 
   .site-nav a{
     text-decoration:none;
-    color:var(--gray-700);
+    color:var(--text-dim);
     border-bottom:1px solid transparent;
     padding-bottom:2px;
     transition:color .15s ease, border-color .15s ease;
@@ -86,7 +87,7 @@
   }
 
   .site-nav a[aria-current="page"]{
-    color:var(--gray-900);
+    color:var(--text);
     border-color:var(--coral);
   }
 
@@ -106,7 +107,7 @@
 
   .role{
     font-size:15px;
-    color:var(--gray-700);
+    color:var(--text-dim);
     margin:6px 0 0;
   }
 
@@ -161,21 +162,21 @@
   .card{
     display:flex;
     flex-direction:column;
-    background:var(--gray-100);
-    border:1px solid var(--gray-200);
+    background:var(--surface);
+    border:1px solid var(--surface-border);
     border-radius:16px;
     padding:14px 16px 16px;
     text-decoration:none;
     color:inherit;
     opacity:0;
-    box-shadow:0 1px 2px rgba(44,44,44,.04);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.03);
     transition:border-color .2s ease, transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s ease;
   }
 
   .card:hover{
     border-color:var(--coral-light);
     transform:translateY(-4px);
-    box-shadow:0 16px 28px rgba(44,44,44,.1);
+    box-shadow:0 16px 28px rgba(255,139,106,.15);
   }
 
   .card-num{
@@ -191,7 +192,7 @@
     flex:1;
     min-height:0;
     border-radius:10px;
-    background-color:var(--gray-50);
+    background-color:var(--surface-2);
     display:flex;
     align-items:center;
     justify-content:center;
@@ -232,7 +233,7 @@
   .card-photo-overlay{
     position:absolute;
     inset:0;
-    background:linear-gradient(to top, rgba(44,44,44,.92) 0%, rgba(44,44,44,.6) 20%, rgba(44,44,44,0) 42%);
+    background:linear-gradient(to top, rgba(12,12,12,.92) 0%, rgba(12,12,12,.6) 20%, rgba(12,12,12,0) 42%);
   }
 
   .card-photo-content{
@@ -246,13 +247,13 @@
   }
 
   .card-photo .card-num{ color:var(--coral-light); }
-  .card-photo .card-title{ color:var(--gray-50); }
-  .card-photo .card-desc{ color:var(--gray-100); opacity:.9; }
+  .card-photo .card-title{ color:var(--text); }
+  .card-photo .card-desc{ color:var(--text); opacity:.9; }
 
   .dots{ display:flex; gap:6px; }
   .dots i{
     width:6px; height:6px;
-    background:var(--gray-700);
+    background:var(--text-dim);
     border-radius:50%;
     display:block;
     animation:dotPulse 1.3s ease-in-out infinite;
@@ -270,12 +271,12 @@
     font-weight:600;
     font-size:14px;
     margin:0 0 6px;
-    color:var(--gray-700);
+    color:var(--text-dim);
   }
 
   .card-desc{
     font-size:13px;
-    color:var(--gray-700);
+    color:var(--text-dim);
     margin:0;
     opacity:.8;
   }
@@ -284,7 +285,7 @@
     text-align:center;
     padding:28px 24px 40px;
     font-size:12px;
-    color:var(--gray-700);
+    color:var(--text-dim);
   }
 
   @media (prefers-reduced-motion: reduce){

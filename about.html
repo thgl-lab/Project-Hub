@@ -8,11 +8,12 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
 <style>
   :root{
-    --gray-50:#F5F5F5;
-    --gray-100:#EDEDED;
-    --gray-200:#DCDCDC;
-    --gray-700:#5b5b5b;
-    --gray-900:#2C2C2C;
+    --bg:#0C0C0C;
+    --surface:#18181A;
+    --surface-2:#212226;
+    --surface-border:#2E3033;
+    --text:#D7E2EA;
+    --text-dim:#8D96A1;
     --coral:#FF8B6A;
     --coral-light:#FFAB91;
     --maxw:1040px;
@@ -20,19 +21,19 @@
 
   *{ box-sizing:border-box; }
 
-  html,body{ margin:0; background:var(--gray-50); }
+  html,body{ margin:0; background:var(--bg); }
 
   body{
     font-family:'Pretendard', -apple-system, 'Malgun Gothic', sans-serif;
-    color:var(--gray-900);
+    color:var(--text);
   }
 
   a{ color:inherit; }
 
   /* ---------- header ---------- */
   .site-header{
-    border-bottom:1px solid var(--gray-900);
-    background:var(--gray-50);
+    border-bottom:1px solid var(--surface-border);
+    background:var(--bg);
     animation:fadeInUp .5s ease both;
   }
 
@@ -70,7 +71,7 @@
 
   .site-nav a{
     text-decoration:none;
-    color:var(--gray-700);
+    color:var(--text-dim);
     border-bottom:1px solid transparent;
     padding-bottom:2px;
     transition:color .15s ease, border-color .15s ease;
@@ -82,7 +83,7 @@
   }
 
   .site-nav a[aria-current="page"]{
-    color:var(--gray-900);
+    color:var(--text);
     border-color:var(--coral);
   }
 
@@ -124,7 +125,7 @@
     flex:none;
     border-radius:16px;
     background:linear-gradient(155deg, var(--coral-light), var(--coral));
-    border:1px solid var(--gray-900);
+    border:1px solid var(--surface-border);
   }
 
   .hero-text{ flex:1; min-width:240px; }
@@ -137,14 +138,14 @@
 
   .role{
     font-size:15px;
-    color:var(--gray-700);
+    color:var(--text-dim);
     margin:6px 0 14px;
   }
 
   .bio{
     font-size:15px;
     line-height:1.7;
-    color:var(--gray-900);
+    color:var(--text);
     margin:0;
     max-width:60ch;
   }
@@ -157,8 +158,8 @@
   }
 
   .skill-card{
-    background:var(--gray-100);
-    border:1px solid var(--gray-200);
+    background:var(--surface);
+    border:1px solid var(--surface-border);
     border-radius:14px;
     padding:18px 20px;
   }
@@ -178,9 +179,9 @@
   .chip{
     font-size:13px;
     font-weight:600;
-    color:var(--gray-900);
-    background:var(--gray-50);
-    border:1px solid var(--gray-200);
+    color:var(--text);
+    background:var(--surface-2);
+    border:1px solid var(--surface-border);
     border-radius:8px;
     padding:6px 12px;
   }
@@ -193,9 +194,9 @@
   }
 
   .interest-list .chip{
-    background:var(--gray-50);
+    background:var(--surface-2);
     border-color:var(--coral-light);
-    color:var(--gray-900);
+    color:var(--text);
   }
 
   /* ---------- career ---------- */
@@ -203,7 +204,7 @@
     list-style:none;
     margin:0;
     padding:0;
-    border-left:2px solid var(--gray-200);
+    border-left:2px solid var(--surface-border);
   }
 
   .timeline li{
@@ -220,7 +221,7 @@
     height:10px;
     border-radius:50%;
     background:var(--coral);
-    border:2px solid var(--gray-50);
+    border:2px solid var(--bg);
   }
 
   .timeline li:last-child{ padding-bottom:0; }
@@ -242,7 +243,7 @@
 
   .timeline-desc{
     font-size:14px;
-    color:var(--gray-700);
+    color:var(--text-dim);
     margin:0;
     line-height:1.6;
   }
@@ -251,7 +252,7 @@
     text-align:center;
     padding:28px 24px 40px;
     font-size:12px;
-    color:var(--gray-700);
+    color:var(--text-dim);
   }
 
   @media (prefers-reduced-motion: reduce){
