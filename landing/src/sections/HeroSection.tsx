@@ -57,7 +57,7 @@ export default function HeroSection() {
         ))}
       </FadeIn>
 
-      <div className="overflow-hidden w-full mt-6 sm:mt-4 md:-mt-5">
+      <div className="overflow-hidden w-full mt-10 sm:mt-8 md:mt-6 lg:mt-4">
         <FadeIn delay={0.15} y={40}>
           <h1 className="hero-heading font-black uppercase tracking-tight leading-none whitespace-nowrap w-full text-[14vw] sm:text-[15vw] md:text-[16vw] lg:text-[17.5vw]">
             Hi, i&apos;m SOHEE
@@ -71,18 +71,19 @@ export default function HeroSection() {
         </FadeIn>
       </div>
 
-      <div className="absolute left-1/2 -translate-x-1/2 z-10 top-1/2 -translate-y-1/2 sm:top-auto sm:translate-y-0 sm:bottom-0 w-[280px] sm:w-[360px] md:w-[440px] lg:w-[520px]">
-        <FadeIn delay={0.6} y={30}>
+      <div className="absolute left-1/2 -translate-x-1/2 z-10 top-1/2 -translate-y-1/2 sm:top-auto sm:translate-y-0 sm:bottom-[3vh] h-[46vh] sm:h-[52vh] md:h-[58vh] lg:h-[62vh] max-h-[760px]">
+        <FadeIn delay={0.6} y={30} className="h-full">
           <Magnet
             padding={150}
             strength={3}
             activeTransition="transform 0.3s ease-out"
             inactiveTransition="transform 0.6s ease-in-out"
+            className="h-full"
           >
             <img
               src={portraitImage}
               alt="SOHEE portrait"
-              className="w-full h-auto select-none pointer-events-none"
+              className="h-full w-auto select-none pointer-events-none"
               draggable={false}
             />
           </Magnet>
